@@ -9,7 +9,7 @@ VALUES
     ('HR'),
     ('Customer Service'),
     ('Customer Service');
-
+    
 INSERT INTO role (title, department_id, salary)
 VALUES
     ('Manager', 1, 1873725),
@@ -19,6 +19,7 @@ VALUES
     ('HR Team Member', 5, 42000),
     ('Customer Service Team Member', 6, 32000),
     ('Customer Service Supervisor', 7, 37000);
+   
 
 INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES

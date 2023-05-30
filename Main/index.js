@@ -15,7 +15,7 @@ require('dotenv').config();
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "",
+  password: "Sn00pcat52$",
   database: "employee_db"
 });
 
@@ -39,8 +39,8 @@ const promptUser = () => {
               'View All Employees',
               'View All Roles',
               'Add Department',
-              'Add Employee',
               'Add Role',
+              'Add Employee',
               'Update Employee Role',
               'Delete Employee',
               'Exit'
@@ -127,6 +127,34 @@ const addDepartment = () => {
   });
 };
 
+const addRole = () => {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: 'title',
+            message: 'Title of new role:'
+        },
+        {
+            type: 'input',
+            name: 'department_id',
+            message: 'Dept ID of new role:'
+        },
+        {
+            type: 'input',
+            name: 'salary',
+            message: 'Salary of new role:'
+        }
+    ])
+    .then((answers) => {
+        const { title, department_id, salary } = answers; 
+        const dbQuery = `INSERT INTO role (title, department_id, salary) VALUES ('${title}', ${department_id}, ${salary})`;
+        db.query(dbQuery, (error, results) => {
+            if (error) throw error;       
+            console.table(`${answers.title} has been added as a new role.`);
+            promptUser();
+    })
+  })};
+
 const addEmployee = () => {
     inquirer.prompt([
         {
@@ -159,35 +187,6 @@ const addEmployee = () => {
             promptUser();
     });
   })};
-  
-
-const addRole = () => {
-  inquirer.prompt([
-      {
-          type: 'input',
-          name: 'title',
-          message: 'Title of new role:'
-      },
-      {
-          type: 'input',
-          name: 'department_id',
-          message: 'Dept ID of new role:'
-      },
-      {
-          type: 'input',
-          name: 'salary',
-          message: 'Salary of new role:'
-      }
-  ])
-  .then((answers) => {
-      const { title, department_id, salary } = answers; 
-      const dbQuery = `INSERT INTO role (title, department_id, salary) VALUES ('${title}', ${department_id}, ${salary})`;
-      db.query(dbQuery, (error, results) => {
-          if (error) throw error;       
-          console.table(`${answers.title} has been added as a new role.`);
-          promptUser();
-  })
-})};
 
 const updateRole = () => {
   inquirer.prompt([

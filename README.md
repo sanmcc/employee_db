@@ -19,7 +19,7 @@ SO THAT I can organize and plan my business
 - `node index.js` to start the app
 
 ## Video Walkthrough 
-[Google Drive File]()
+[Google Drive File](https://drive.google.com/file/d/1OrRo3hG4rZNQ_f70pybiuO8yYgbM_C9r/view)
 
 ## Questions 
 [Email me](mailto:saniyya.mcclendon@gmail.com)
